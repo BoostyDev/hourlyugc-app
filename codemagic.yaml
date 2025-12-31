@@ -7,23 +7,24 @@ workflows:
     
     environment:
       flutter: stable
-      xcode: latest
+      xcode: 15.4
       cocoapods: default
       
     cache:
       cache_paths:
         - $HOME/.pub-cache
         - $HOME/Library/Caches/CocoaPods
-        - ios/Pods
         
     scripts:
       - name: Get Flutter packages
         script: |
-          flutter packages pub get
+          flutter pub get
           
-      - name: Install pods
+      - name: Install CocoaPods dependencies
         script: |
-          cd ios && pod install
+          cd ios
+          rm -rf Pods Podfile.lock
+          pod install --repo-update
           
       - name: Flutter build iOS (no codesign)
         script: |
