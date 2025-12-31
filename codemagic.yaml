@@ -1,7 +1,7 @@
 workflows:
-  # iOS WITHOUT code signing - for testing compilation
-  ios-test:
-    name: iOS Test Build (No Signing)
+  # iOS SIMULATOR - Para probar en navegador con App Preview
+  ios-simulator:
+    name: iOS Simulator (App Preview)
     max_build_duration: 60
     instance_type: mac_mini_m2
     
@@ -26,13 +26,12 @@ workflows:
           rm -rf Pods Podfile.lock
           pod install --repo-update
           
-      - name: Flutter build iOS (no codesign)
+      - name: Build for iOS Simulator
         script: |
-          flutter build ios --release --no-codesign
+          flutter build ios --simulator
             
     artifacts:
-      - build/ios/iphoneos/*.app
-      - /tmp/xcodebuild_logs/*.log
+      - build/ios/iphonesimulator/Runner.app
       
   # iOS WITH code signing - when you have Apple Developer account
   ios-release:
