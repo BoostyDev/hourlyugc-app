@@ -1,6 +1,41 @@
 workflows:
-  ios-workflow:
-    name: iOS Workflow
+  # iOS WITHOUT code signing - for testing compilation
+  ios-test:
+    name: iOS Test Build (No Signing)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+        - $HOME/Library/Caches/CocoaPods
+        - ios/Pods
+        
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+          
+      - name: Install pods
+        script: |
+          cd ios && pod install
+          
+      - name: Flutter build iOS (no codesign)
+        script: |
+          flutter build ios --release --no-codesign
+            
+    artifacts:
+      - build/ios/iphoneos/*.app
+      - /tmp/xcodebuild_logs/*.log
+      
+  # iOS WITH code signing - when you have Apple Developer account
+  ios-release:
+    name: iOS Release (With Signing)
     max_build_duration: 60
     instance_type: mac_mini_m2
     
@@ -19,7 +54,7 @@ workflows:
         - ios/Pods
         
     scripts:
-      - name: Set up code signing settings on Xcode project
+      - name: Set up code signing
         script: |
           xcode-project use-profiles
           
@@ -29,7 +64,7 @@ workflows:
           
       - name: Install pods
         script: |
-          find . -name "Podfile" -execdir pod install \;
+          cd ios && pod install
           
       - name: Flutter build iOS
         script: |
@@ -44,7 +79,6 @@ workflows:
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
       
     publishing:
       email:
