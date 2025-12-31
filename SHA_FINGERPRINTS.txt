@@ -1,0 +1,18 @@
+﻿Firebase SHA Fingerprints
+Generated: 2025-12-28 22:57:31
+
+SHA-1:
+54:51:A7:DA:3F:93:CA:E4:48:7B:19:6B:0C:CB:93:05:F1:1D:13:AC
+
+SHA-256:
+52:0A:EE:70:60:90:06:22:42:CA:D8:F1:DE:09:E5:9E:AC:C0:07:9A:40:35:78:D9:D1:A2:08:92:DE:2C:96:46
+
+Next Steps:
+1. Go to: https://console.firebase.google.com/
+2. Project: postprofit-a4a46
+3. Project Settings > Your apps > Android app
+4. Click "Add fingerprint" and add SHA-1
+5. Click "Add fingerprint" and add SHA-256
+6. Download new google-services.json
+7. Replace: android\app\google-services.json
+8. Run: flutter clean && flutter run

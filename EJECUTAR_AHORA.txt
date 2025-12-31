@@ -1,0 +1,93 @@
+============================================================
+  EJECUTA ESTOS COMANDOS EN TU TERMINAL DE FLUTTER
+============================================================
+
+PASO 1: Detener la app actual
+------------------------------
+Si Flutter está corriendo, presiona: q
+(o Ctrl+C para forzar)
+
+
+PASO 2: Ir al directorio del proyecto
+---------------------------------------
+cd C:\Mobileprofit\hourlyugc
+
+
+PASO 3: Limpiar cache
+-----------------------
+flutter clean
+
+
+PASO 4: Ejecutar app con nueva configuración
+---------------------------------------------
+flutter run
+
+
+============================================================
+  QUÉ ESPERAR EN LOS LOGS
+============================================================
+
+✅ SEÑALES DE ÉXITO:
+
+1. Al iniciar:
+   I/flutter: ✅ Firebase App Check initialized (Debug mode)
+
+2. Al intentar phone auth:
+   - NO deberías ver este error:
+     ❌ "This app is not authorized to use Firebase Authentication"
+   
+   - Deberías ver:
+     ✅ "Successfully obtained site key"
+     ✅ SMS enviado correctamente
+
+3. Warnings que son normales (puedes ignorar):
+   - IntegrityService : Failed to bind to the service
+     (normal en emuladores)
+
+
+============================================================
+  SI AÚN VES EL ERROR DE AUTENTICACIÓN
+============================================================
+
+1. Verifica en Firebase Console:
+   ✅ SHA-1 agregado: 54:51:A7:DA:3F:93:CA:E4:48:7B:19:6B:0C:CB:93:05:F1:1D:13:AC
+   ✅ SHA-256 agregado: 52:0A:EE:70:60:90:06:22:42:CA:D8:F1:DE:09:E5:9E:AC:C0:07:9A:40:35:78:D9:D1:A2:08:92:DE:2C:96:46
+
+2. Verifica google-services.json:
+   - Archivo ubicado en: android\app\google-services.json
+   - Descargado DESPUÉS de agregar los SHA fingerprints
+   - Última modificación: HOY
+
+3. Espera 2-3 minutos después de agregar los SHA
+
+4. Si todo está correcto, ejecuta:
+   flutter clean
+   flutter pub get
+   flutter run
+
+
+============================================================
+  TESTING CON NÚMERO DE PRUEBA (OPCIONAL)
+============================================================
+
+Para evitar enviar SMS reales:
+
+1. Firebase Console > Authentication > Sign-in method > Phone
+2. Agregar número de prueba:
+   Teléfono: +1 650-555-1234
+   Código: 123456
+
+3. Usar ese número en la app
+4. Introducir código: 123456
+5. ¡Debería funcionar sin enviar SMS real!
+
+
+============================================================
+
+¿Necesitas ayuda?
+- SHA_FINGERPRINTS.txt - Tus valores para verificar
+- INSTRUCCIONES_FINALES.md - Guía completa
+- FIX_SHA_FINGERPRINTS.md - Solución detallada
+
+============================================================
+
