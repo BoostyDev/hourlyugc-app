@@ -144,7 +144,14 @@ class _JobsScreenState extends ConsumerState<JobsScreen> {
               color: const Color(0xFF0F172A),
               borderRadius: BorderRadius.circular(999),
             ),
-            child: const Icon(Icons.sort, color: Colors.white, size: 20),
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/icons/SortAscending.svg',
+                width: 20,
+                height: 20,
+                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              ),
+            ),
           ),
           const SizedBox(width: 6),
           // Filter Button
@@ -161,7 +168,14 @@ class _JobsScreenState extends ConsumerState<JobsScreen> {
                 ),
               ],
             ),
-            child: const Icon(Icons.tune, color: Color(0xFF0F172A), size: 20),
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/icons/Filter.svg',
+                width: 20,
+                height: 20,
+                colorFilter: const ColorFilter.mode(Color(0xFF0F172A), BlendMode.srcIn),
+              ),
+            ),
           ),
         ],
       ),
@@ -380,7 +394,14 @@ class _JobCard extends StatelessWidget {
                               color: const Color(0xFF0F172A),
                               borderRadius: BorderRadius.circular(999),
                             ),
-                            child: const Icon(Icons.share, color: Colors.white, size: 16),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/icons/Share.svg',
+                                width: 16,
+                                height: 16,
+                                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                              ),
+                            ),
                           ),
                           const SizedBox(width: 8),
                           Container(
@@ -396,7 +417,14 @@ class _JobCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: const Icon(Icons.favorite_border, color: Color(0xFF0F172A), size: 16),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/icons/Love.svg',
+                                width: 16,
+                                height: 16,
+                                colorFilter: const ColorFilter.mode(Color(0xFF0F172A), BlendMode.srcIn),
+                              ),
+                            ),
                           ),
                         ],
                       ),
