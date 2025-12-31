@@ -85,18 +85,23 @@ class NotificationService {
     }
     
     try {
-      // Request permission
-      final settings = await _messaging.requestPermission(
-        alert: true,
-        badge: true,
-        sound: true,
-        provisional: false,
-        announcement: false,
-        carPlay: false,
-        criticalAlert: false,
-      );
-      
-      // Permission status checked
+      // Request permission - wrapped in try-catch for simulator support
+      NotificationSettings? settings;
+      try {
+        settings = await _messaging.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+          provisional: false,
+          announcement: false,
+          carPlay: false,
+          criticalAlert: false,
+        );
+      } catch (e) {
+        // Permission request failed (common on simulators)
+        debugPrint('Permission request failed: $e');
+        return;
+      }
       
       if (settings.authorizationStatus == AuthorizationStatus.authorized ||
           settings.authorizationStatus == AuthorizationStatus.provisional) {
@@ -104,8 +109,12 @@ class NotificationService {
         // Initialize local notifications
         await _initializeLocalNotifications();
         
-        // Get FCM token
-        await _getFCMToken();
+        // Get FCM token - may fail on simulators
+        try {
+          await _getFCMToken();
+        } catch (e) {
+          debugPrint('FCM token unavailable (simulator?): $e');
+        }
         
         // Setup message handlers
         _setupMessageHandlers();

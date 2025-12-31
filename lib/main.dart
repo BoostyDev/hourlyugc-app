@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'core/config/firebase_config.dart';
@@ -20,11 +21,17 @@ void main() async {
   // Initialize Firebase
   await FirebaseConfig.initialize();
   
-  // Register background message handler
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  
-  // Initialize notification service
-  await NotificationService().initialize();
+  // Only setup push notifications on real devices (not simulators)
+  // FCM doesn't work on iOS simulators
+  try {
+    if (!kIsWeb) {
+      FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+      await NotificationService().initialize();
+    }
+  } catch (e) {
+    // Silently handle notification errors (common on simulators)
+    debugPrint('Notification setup skipped: $e');
+  }
   
   runApp(
     const ProviderScope(
