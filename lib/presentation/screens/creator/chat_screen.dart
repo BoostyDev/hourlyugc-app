@@ -912,25 +912,11 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Chat circles icon - matching Figma design
-            Container(
-              width: 154,
-              height: 154,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF1F5F9),
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/icons/chat_chats_circle.svg',
-                  width: 100,
-                  height: 100,
-                  colorFilter: const ColorFilter.mode(
-                    Color(0xFFCBD5E1),
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
+            // Chat circles icon - using ChatsCircle.svg from Figma
+            SvgPicture.asset(
+              'assets/icons/ChatsCircle.svg',
+              width: 185,
+              height: 180,
             ),
             const SizedBox(height: 29),
             // Title
