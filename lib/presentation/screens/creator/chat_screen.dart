@@ -520,10 +520,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
               ),
               child: Row(
                 children: [
-                  _buildNavItem(0, 'assets/icons/nav_home.svg', 'Home', () => context.push('/creator/home')),
-                  _buildNavItem(1, 'assets/icons/nav_jobs.svg', null, () => context.push('/creator/jobs')),
-                  _buildNavItem(2, 'assets/icons/nav_chat.svg', 'Chat', null, isActive: true),
-                  _buildNavItem(3, 'assets/icons/nav_wallet.svg', null, () => context.push('/creator/payout')),
+                  _buildNavItem(0, 'assets/icons/Navigation.svg', 'Home', () => context.push('/creator/home')),
+                  _buildNavItem(1, 'assets/icons/video.svg', null, () => context.push('/creator/jobs')),
+                  _buildNavItem(2, 'assets/icons/Group 13.svg', 'Chat', null, isActive: true),
+                  _buildNavItem(3, 'assets/icons/Vector-1.svg', null, () => context.push('/creator/payout')),
                 ],
               ),
             ),
@@ -691,7 +691,7 @@ class _SearchBar extends StatelessWidget {
             ),
             child: IconButton(
               icon: SvgPicture.asset(
-                'assets/icons/bell_notification.svg',
+                'assets/icons/Bell.svg',
                 width: 24,
                 height: 24,
                 colorFilter: const ColorFilter.mode(
@@ -856,7 +856,7 @@ class _ChatsList extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      'assets/icons/chat_chats_circle.svg',
+                      'assets/icons/ChatsCircle.svg',
                       width: 80,
                       height: 80,
                       colorFilter: ColorFilter.mode(
@@ -974,7 +974,7 @@ class _GroupsSection extends StatelessWidget {
                 children: [
                   Center(
                     child: SvgPicture.asset(
-                      'assets/icons/chat_chats_circle.svg',
+                      'assets/icons/ChatsCircle.svg',
                       width: 28,
                       height: 28,
                       colorFilter: const ColorFilter.mode(
@@ -1607,11 +1607,11 @@ class _ChatHeader extends ConsumerWidget {
                   ),
                 ],
               ),
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/icons/DotsThreeVertical.svg',
-                  width: 24,
-                  height: 24,
+              child: const Center(
+                child: Icon(
+                  Icons.more_vert,
+                  size: 24,
+                  color: Color(0xFF0F172A),
                 ),
               ),
             ),

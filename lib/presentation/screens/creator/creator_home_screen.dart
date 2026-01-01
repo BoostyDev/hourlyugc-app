@@ -287,7 +287,7 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
                       children: [
                         Center(
                           child: SvgPicture.asset(
-                            'assets/icons/bell_notification.svg',
+                            'assets/icons/Bell.svg',
                             width: 24,
                             height: 24,
                             colorFilter: const ColorFilter.mode(
@@ -398,24 +398,37 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
             clipBehavior: Clip.hardEdge,
             child: Stack(
               children: [
-                // Figma Node 33:2440 - Group 1 (glow top-left)
+                // Glow effects using containers with gradients (replacing removed PNG assets)
                 Positioned(
                   left: -40,
                   top: -30,
-                  child: Image.asset(
-                    'assets/icons/Group 1.png',
+                  child: Container(
                     width: 188,
                     height: 182,
+                    decoration: BoxDecoration(
+                      gradient: RadialGradient(
+                        colors: [
+                          const Color(0xFF10B981).withOpacity(0.3),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-                // Figma Node 33:2436 - Group 2 (glow bottom-right)
                 Positioned(
                   right: -50,
                   bottom: -30,
-                  child: Image.asset(
-                    'assets/icons/Group 2.png',
+                  child: Container(
                     width: 210,
                     height: 215,
+                    decoration: BoxDecoration(
+                      gradient: RadialGradient(
+                        colors: [
+                          const Color(0xFF10B981).withOpacity(0.2),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 // Content
@@ -542,7 +555,7 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
             children: [
               Expanded(
                 child: _buildQuickActionButtonCompact(
-                  svgPath: 'assets/icons/check_circle.svg',
+                  svgPath: 'assets/icons/Shield.svg',
                   label: 'Check',
                   onTap: () {},
                 ),
@@ -550,7 +563,7 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
               const SizedBox(width: 6),
               Expanded(
                 child: _buildQuickActionButtonCompact(
-                  svgPath: 'assets/icons/tasks_icon.svg',
+                  svgPath: 'assets/icons/video.svg',
                   label: 'Apps',
                   onTap: () {},
                 ),
@@ -558,7 +571,7 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
               const SizedBox(width: 6),
               // Referral - icon only
               _buildQuickActionIconOnly(
-                svgPath: 'assets/icons/user_circle_plus.svg',
+                svgPath: 'assets/icons/Users.svg',
                 onTap: () {},
               ),
             ],
@@ -718,17 +731,13 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
               ],
             ),
           ),
-          // Close button - SVG from Figma
+          // Close button
           GestureDetector(
             onTap: () => setState(() => _showReferralBanner = false),
-            child: SvgPicture.asset(
-              'assets/icons/x_close.svg',
-              width: 14,
-              height: 14,
-              colorFilter: const ColorFilter.mode(
-                Color(0xFF94A3B8),
-                BlendMode.srcIn,
-              ),
+            child: const Icon(
+              Icons.close,
+              size: 18,
+              color: Color(0xFF94A3B8),
             ),
           ),
         ],
@@ -1012,13 +1021,13 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
               child: Row(
                 children: [
                   // Home - active with green gradient (Figma width: 114px)
-                  _buildNavItemSvg(0, 'assets/icons/nav_home.svg', 'Home', isActive: _selectedNavIndex == 0),
+                  _buildNavItemSvg(0, 'assets/icons/Navigation.svg', 'Home', isActive: _selectedNavIndex == 0),
                   // Jobs (Figma width: 77.333px)
-                  _buildNavItemSvg(1, 'assets/icons/nav_jobs.svg', null, isActive: _selectedNavIndex == 1),
+                  _buildNavItemSvg(1, 'assets/icons/video.svg', null, isActive: _selectedNavIndex == 1),
                   // Chat (Figma width: 77.333px)
-                  _buildNavItemSvg(2, 'assets/icons/nav_chat.svg', null, isActive: _selectedNavIndex == 2),
+                  _buildNavItemSvg(2, 'assets/icons/Group 13.svg', null, isActive: _selectedNavIndex == 2),
                   // Wallet (Figma width: 77.333px)
-                  _buildNavItemSvg(3, 'assets/icons/nav_wallet.svg', null, isActive: _selectedNavIndex == 3),
+                  _buildNavItemSvg(3, 'assets/icons/Vector-1.svg', null, isActive: _selectedNavIndex == 3),
                 ],
               ),
             ),

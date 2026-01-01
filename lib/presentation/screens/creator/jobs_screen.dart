@@ -170,7 +170,7 @@ class _JobsScreenState extends ConsumerState<JobsScreen> {
             ),
             child: Center(
               child: SvgPicture.asset(
-                'assets/icons/SortAscending.svg',
+                'assets/icons/Sort.svg',
                 width: 20,
                 height: 20,
                 colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
@@ -451,7 +451,7 @@ class _JobCard extends StatelessWidget {
                             border: Border.all(color: const Color(0xFFE2E8F0), width: 1.5),
                           ),
                           child: SvgPicture.asset(
-                            'assets/icons/tiktok_layer1.svg',
+                            'assets/icons/instagram.svg',
                             width: 16,
                             height: 16,
                           ),
