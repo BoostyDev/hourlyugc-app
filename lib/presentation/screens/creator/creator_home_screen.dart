@@ -1101,40 +1101,29 @@ class _CreatorHomeScreenState extends ConsumerState<CreatorHomeScreen> {
               : null,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
                 svgPath,
-                width: 24, // Figma: size 24px
-                height: 24,
+                width: 20, // Reduced size
+                height: 20,
                 colorFilter: ColorFilter.mode(
-                  // Figma: active #022C22, inactive #64748B
                   isActive ? const Color(0xFF022C22) : const Color(0xFF64748B),
                   BlendMode.srcIn,
                 ),
               ),
               if (isActive && label != null) ...[
-                const SizedBox(width: 6), // Figma: gap 6px
-                Text(
-                  label,
-                  style: GoogleFonts.inter(
-                    fontSize: 16, // Figma: 16px
-                    fontWeight: FontWeight.w500, // Figma: Medium
-                    color: const Color(0xFF022C22), // Figma: #022c22
-                    letterSpacing: -0.18, // Figma: -0.18px
-                    // Figma: text-shadow 0px 2px 2.4px rgba(102,163,132,0.25)
-                    shadows: [
-                      Shadow(
-                        color: const Color(0xFF66A384).withOpacity(0.25),
-                        offset: const Offset(0, 2),
-                        blurRadius: 2.4,
-                      ),
-                      // Figma: additional shadow 0px 0.5px 0px rgba(255,255,255,0.5)
-                      const Shadow(
-                        color: Color(0x80FFFFFF),
-                        offset: Offset(0, 0.5),
-                        blurRadius: 0,
-                      ),
-                    ],
+                const SizedBox(width: 4),
+                Flexible(
+                  child: Text(
+                    label,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF022C22),
+                      letterSpacing: -0.18,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
